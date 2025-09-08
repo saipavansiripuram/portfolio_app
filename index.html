@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Saipavan Siripuram — Portfolio</title>
+  <meta name="description" content="Saipavan Siripuram — Software Engineer portfolio (React, Angular, Node.js, AWS)" />
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:rgba(255,255,255,0.65);
+      --glass: rgba(255,255,255,0.04);
+      --accent: linear-gradient(90deg,#6ee7b7,#60a5fa);
+      --glass-border: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.02);
+      font-synthesis: none;
+    }
+    /* system font stack (apple-like) */
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.05), transparent),
+                  radial-gradient(900px 500px at 90% 90%, rgba(110,231,183,0.03), transparent),
+                  var(--bg);
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    /* container */
+    .wrap{max-width:1100px;margin:0 auto;padding:48px 24px;}
+
+    /* top nav */
+    header{position:sticky;top:0;z-index:60;backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03);}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 24px}
+    .brand{display:flex;gap:12px;align-items:center;font-weight:600;font-size:18px}
+    .logo{width:40px;height:40px;border-radius:10px;background:var(--accent);display:inline-grid;place-items:center;color:#04263b;font-weight:700}
+    nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-weight:500}
+    .cta{padding:8px 14px;border-radius:10px;background:linear-gradient(90deg,#111827, #0b1220);border:1px solid var(--glass-border);}
+
+    /* hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;padding:56px 0}
+    .eyebrow{color:var(--muted);font-size:13px}
+    h1{font-size:44px;margin:8px 0 10px;letter-spacing:-0.5px}
+    p.lead{color:var(--muted);max-width:68ch}
+
+    .contact-card{background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border:1px solid var(--glass-border);padding:22px;border-radius:14px;min-height:180px}
+    .meta{display:flex;flex-direction:column;gap:8px}
+    .meta a{color:var(--muted);text-decoration:none;font-weight:600}
+    .big{font-size:20px;font-weight:700}
+
+    /* sections */
+    section{padding:48px 0;border-top:1px solid var(--glass-2)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid var(--glass-border);padding:20px;border-radius:12px}
+
+    /* skills */
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.03);font-weight:600}
+
+    /* projects */
+    .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .proj{padding:20px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.04)}
+    .proj h4{margin:0 0 8px}
+    .proj p{color:var(--muted);margin:0}
+
+    footer{padding:30px 0;color:var(--muted);text-align:center}
+
+    /* responsive */
+    @media (max-width:960px){
+      .hero{grid-template-columns:1fr;}
+      .projects{grid-template-columns:1fr}
+      nav ul{display:none}
+    }
+
+    /* subtle button */
+    .button{display:inline-block;padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);text-decoration:none;color:#fff;font-weight:600}
+
+    /* small details */
+    .muted{color:var(--muted)}
+    .role{color:#9ae6b4;font-weight:700}
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .time-item{border-left:2px solid rgba(255,255,255,0.04);padding-left:12px}
+    .download{font-size:13px}
+
+    /* glassy hero spotlight */
+    .hero-art{height:320px;border-radius:18px;background:linear-gradient(135deg, rgba(96,165,250,0.12), rgba(110,231,183,0.08));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(2,6,23,0.6);}
+    .hero-art h3{margin:0;font-size:20px;color:#fff}
+
+    /* small logo list */
+    .mini-list{display:flex;gap:10px;flex-wrap:wrap}
+    .mini{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:600}
+
+    /* contact form */
+    form{display:grid;gap:12px}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:#fff}
+    textarea{min-height:120px;resize:vertical}
+
+    /* small animation */
+    .fade-in{animation:fade .9s ease both}
+    @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><div class="logo">SS</div><div>
+        <div style="font-size:13px;color:var(--muted)">Saipavan Siripuram</div>
+        <div style="font-size:11px;color:var(--muted)">Software Engineer</div>
+      </div></div>
+
+      <nav aria-label="primary navigation">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <a class="button" href="#contact">Hire me</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="fade-in">
+        <div class="eyebrow">Hello — I build delightful web apps</div>
+        <h1>Saipavan Siripuram</h1>
+        <div class="role">Software Engineer — React · Angular · Node.js · AWS</div>
+        <p class="lead">I build scalable, high-performance web applications with a focus on clean user experience, robust APIs, and cloud-first deployments. Experienced in full-stack development, database design and automation using AWS.</p>
+
+        <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+          <a class="cta" href="#projects">See Projects</a>
+          <a class="button" href="mailto:saipavansiripuram5@gmail.com">Message</a>
+          <a class="button" href="https://github.com/saipavansiripuram" target="_blank">GitHub</a>
+        </div>
+
+        <div style="margin-top:22px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <div class="mini-list">
+            <span class="mini">JavaScript</span>
+            <span class="mini">React</span>
+            <span class="mini">Angular</span>
+            <span class="mini">Node.js</span>
+            <span class="mini">AWS</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="contact-card fade-in">
+        <div style="display:flex;justify-content:space-between;align-items:start;gap:12px">
+          <div>
+            <div class="big">+91 6309517918</div>
+            <div class="muted">Hyderabad, Telangana</div>
+            <a href="mailto:saipavansiripuram5@gmail.com" style="display:block;margin-top:10px">saipavansiripuram5@gmail.com</a>
+          </div>
+          <div style="text-align:right">
+            <div class="muted">LinkedIn</div>
+            <a href="https://linkedin.com/saipavansiripuram" target="_blank" class="big">linkedin.com/saipavansiripuram</a>
+          </div>
+        </div>
+
+        <hr style="margin:16px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
+        <div class="muted">Role</div>
+        <div style="margin-top:6px" class="role">Software Engineer — LTIMindtree</div>
+        <div style="margin-top:12px;color:var(--muted);font-size:14px">1+ years experience building scalable web apps with React, Angular, Node.js and AWS.</div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:20px">
+        <h2>About</h2>
+        <div class="download"><a class="button" href="#contact">Download CV</a></div>
+      </div>
+      <div style="margin-top:12px;color:var(--muted)">Software Engineer with 1+ years of experience building scalable, high-performance web applications using React, Angular, Node.js, and AWS. Skilled in full-stack development, database optimization and REST API design, with a strong passion for solving complex problems and delivering user-focused solutions.</div>
+
+      <div style="margin-top:18px" class="grid-2">
+        <div class="card">
+          <h3>Education</h3>
+          <div style="margin-top:8px;color:var(--muted)">
+            <strong>B.Tech — Computer Science & Engineering (Hons)</strong><br>
+            Lovely Professional University — CGPA: 7.69 (2019–2023)
+          </div>
+          <div style="margin-top:12px;color:var(--muted)">
+            <strong>Intermediate (Senior Secondary)</strong><br>
+            Sri Gayatri Junior College — CGPA: 9.2 (2017–2019)
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Certificates & Achievements</h3>
+          <ul style="margin:8px 0 0 18px;color:var(--muted)">
+            <li>GitHub Foundations — Microsoft</li>
+            <li>Career Essentials in Generative AI — Microsoft & LinkedIn</li>
+            <li>Master Java & Spring Boot — Cipher Schools</li>
+            <li>Innovacer Hackathon — Pre-qualifying rounds cleared</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div style="margin-top:8px;color:var(--muted)">Languages, frameworks and tools I use regularly:</div>
+      <div style="margin-top:12px" class="chips">
+        <span class="chip">JavaScript</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">Java</span>
+        <span class="chip">React</span>
+        <span class="chip">Angular</span>
+        <span class="chip">Redux</span>
+        <span class="chip">Tailwind CSS</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Express</span>
+        <span class="chip">MySQL</span>
+        <span class="chip">MongoDB</span>
+        <span class="chip">AWS (S3, EC2)</span>
+        <span class="chip">Docker</span>
+        <span class="chip">CI/CD</span>
+        <span class="chip">Terraform</span>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline" style="margin-top:12px">
+        <div class="time-item card">
+          <strong>Software Engineer — LTIMindtree</strong>
+          <div class="muted">Jun 2024 – Present • Bengaluru, Karnataka</div>
+          <p style="margin-top:8px;color:var(--muted)">Designed and optimized scalable web application modules using JavaScript, React and Laravel; built and integrated RESTful APIs with MySQL supporting 5,000+ monthly active users; implemented unit testing and participated in agile ceremonies.</p>
+        </div>
+
+        <div class="time-item card">
+          <strong>Web Development Intern — Wibes App Solutions</strong>
+          <div class="muted">Jan 2024 – Jun 2024 • Hyderabad</div>
+          <p style="margin-top:8px;color:var(--muted)">Built SPAs using React and Angular; integrated MongoDB and Parse Server; used AWS S3 & EC2 for deployments; collaborated with UI/UX to design responsive layouts.</p>
+        </div>
+
+        <div class="time-item card">
+          <strong>Project Intern — Bharath Dynamics Pvt Ltd</strong>
+          <div class="muted">Jan 2022 – Mar 2022 • Hyderabad</div>
+          <p style="margin-top:8px;color:var(--muted)">Developed internal React portal for tracking project progress with reusable components and hooks.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div style="margin-top:12px" class="projects">
+        <div class="proj">
+          <h4>L’Oreal Salon Shop — Sep 2024</h4>
+          <p>Streamlined salon operations with scheduling, inventory, CRM and analytics. Built with PHP, Laravel and MySQL as part of a 5-member team.</p>
+        </div>
+
+        <div class="proj">
+          <h4>Video Streaming Platform — Mar 2023 – Jul 2023</h4>
+          <p>Backend dashboard and storage optimization using Angular, Parse Server and AWS for movies & career content streaming.</p>
+        </div>
+
+        <div class="proj">
+          <h4>Vehicle Loan Hub — Mar 2023 – Jul 2023</h4>
+          <p>A vehicle loan application platform with JWT-based authentication, role-based access and dashboards built with React, Redux and ExpressJS.</p>
+        </div>
+
+        <div class="proj">
+          <h4>Personal / Side Projects</h4>
+          <p>Several projects involving REST APIs, microservices, CI/CD pipelines and front-end optimizations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div style="margin-top:12px;display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start">
+        <div class="card">
+          <form onsubmit="handleContact(event)">
+            <label class="muted">Name</label>
+            <input id="cname" placeholder="Your name" required>
+            <label class="muted">Email</label>
+            <input id="cemail" type="email" placeholder="you@example.com" required>
+            <label class="muted">Message</label>
+            <textarea id="cmsg" placeholder="How can I help?" required></textarea>
+            <div style="margin-top:8px;display:flex;gap:8px">
+              <button class="button" type="submit">Send</button>
+              <a class="button" href="mailto:saipavansiripuram5@gmail.com">Or email directly</a>
+            </div>
+          </form>
+          <div id="cstatus" style="margin-top:10px;color:var(--muted)"></div>
+        </div>
+
+        <aside class="card">
+          <div><strong>Get in touch</strong></div>
+          <div style="margin-top:8px" class="muted">Phone: +91 6309517918</div>
+          <div class="muted">Location: Hyderabad, Telangana</div>
+          <div style="margin-top:12px"><a class="button" href="https://github.com/saipavansiripuram" target="_blank">View GitHub</a></div>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap muted">© Saipavan Siripuram — Built with ❤️ · Inspired by Apple’s clean product pages</div>
+  </footer>
+
+  <script>
+    // small helpers - smooth scroll and fake contact handling
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href=a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          const el=document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      })
+    })
+
+    function handleContact(e){
+      e.preventDefault();
+      const name=document.getElementById('cname').value.trim();
+      const email=document.getElementById('cemail').value.trim();
+      const msg=document.getElementById('cmsg').value.trim();
+      const status=document.getElementById('cstatus');
+      if(!name||!email||!msg){status.textContent='Please fill all fields';return}
+      // This is a demo placeholder. Replace with your server endpoint (Formspree, Netlify forms, or your API).
+      status.textContent='Thanks — message prepared. Open your email client to send.';
+      // open mailto as a fallback
+      const subject = encodeURIComponent('Portfolio contact from '+name);
+      const body = encodeURIComponent(msg + '\n\n— ' + name + ' ('+email+')');
+      window.location.href = 'mailto:saipavansiripuram5@gmail.com?subject='+subject+'&body='+body;
+    }
+  </script>
+</body>
+</html>
