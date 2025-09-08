@@ -5,49 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Saipavan Siripuram — Portfolio</title>
   <meta name="description" content="Saipavan Siripuram — Software Engineer portfolio (React, Angular, Node.js, AWS)" />
+  <meta name="keywords" content="Saipavan Siripuram, Software Engineer, React, Angular, Node.js, AWS, Portfolio" />
+  <meta name="author" content="Saipavan Siripuram" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Saipavan Siripuram — Portfolio" />
+  <meta property="og:description" content="Portfolio of Saipavan Siripuram, a Software Engineer specializing in React, Angular, Node.js, and AWS." />
+  <meta property="og:type" content="website" />
+  <!-- Replace with your actual domain and preview image when available -->
+  <meta property="og:url" content="https://yourdomain.com" />
+  <meta property="og:image" content="https://yourdomain.com/preview.png" />
+
+  <!-- Preload common assets (change if you add fonts or images) -->
+  <link rel="preload" href="Saipavan-Siripuram-Resume.pdf" as="document">
+
   <style>
     :root{
       --bg:#0f1724;
       --card:#0b1220;
-      --muted:rgba(255,255,255,0.65);
+      --muted:rgba(255,255,255,0.75);
+      --muted-2:rgba(255,255,255,0.6);
       --glass: rgba(255,255,255,0.04);
-      --accent: linear-gradient(90deg,#6ee7b7,#60a5fa);
+      --accent-gradient: linear-gradient(90deg,#6ee7b7,#60a5fa);
       --glass-border: rgba(255,255,255,0.06);
       --glass-2: rgba(255,255,255,0.02);
+      --radius:12px;
       font-synthesis: none;
     }
-    /* system font stack (apple-like) */
+    /* base */
     html,body{height:100%;}
     body{
       margin:0;
       font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.05), transparent),
-                  radial-gradient(900px 500px at 90% 90%, rgba(110,231,183,0.03), transparent),
-                  var(--bg);
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(96,165,250,0.05), transparent),
+        radial-gradient(900px 500px at 90% 90%, rgba(110,231,183,0.03), transparent),
+        var(--bg);
       color:#fff;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.45;
+      -webkit-font-feature-settings: "ss01" on;
     }
-    /* container */
-    .wrap{max-width:1100px;margin:0 auto;padding:48px 24px;}
 
-    /* top nav */
-    header{position:sticky;top:0;z-index:60;backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,0.03);}
+    .wrap{max-width:1100px;margin:0 auto;padding:48px 24px;box-sizing:border-box;}
+
+    /* header */
+    header{position:sticky;top:0;z-index:60;backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 24px}
     .brand{display:flex;gap:12px;align-items:center;font-weight:600;font-size:18px}
-    .logo{width:40px;height:40px;border-radius:10px;background:var(--accent);display:inline-grid;place-items:center;color:#04263b;font-weight:700}
+    .logo{width:46px;height:46px;border-radius:10px;background:var(--accent-gradient);display:inline-grid;place-items:center;color:#04263b;font-weight:700;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
     nav ul{list-style:none;margin:0;padding:0;display:flex;gap:18px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;font-weight:500}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:15px}
+    nav a:focus, nav a:hover{color:#fff;outline:3px solid rgba(96,165,250,0.09);outline-offset:4px;border-radius:6px;padding:6px}
     .cta{padding:8px 14px;border-radius:10px;background:linear-gradient(90deg,#111827, #0b1220);border:1px solid var(--glass-border);}
 
     /* hero */
     .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center;padding:56px 0}
     .eyebrow{color:var(--muted);font-size:13px}
     h1{font-size:44px;margin:8px 0 10px;letter-spacing:-0.5px}
-    p.lead{color:var(--muted);max-width:68ch}
+    p.lead{color:var(--muted-2);max-width:68ch;font-size:16px}
 
-    .contact-card{background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border:1px solid var(--glass-border);padding:22px;border-radius:14px;min-height:180px}
+    .contact-card{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass-border);padding:22px;border-radius:var(--radius);min-height:180px}
     .meta{display:flex;flex-direction:column;gap:8px}
     .meta a{color:var(--muted);text-decoration:none;font-weight:600}
     .big{font-size:20px;font-weight:700}
@@ -59,25 +77,45 @@
 
     /* skills */
     .chips{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.03);font-weight:600}
+    .chip{padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.03);font-weight:600;font-size:14px}
 
     /* projects */
     .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
     .proj{padding:20px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.04)}
     .proj h4{margin:0 0 8px}
-    .proj p{color:var(--muted);margin:0}
+    .proj p{color:var(--muted-2);margin:0}
 
     footer{padding:30px 0;color:var(--muted);text-align:center}
 
     /* responsive */
     @media (max-width:960px){
-      .hero{grid-template-columns:1fr;}
+      .hero{grid-template-columns:1fr;gap:22px;padding:36px 0}
       .projects{grid-template-columns:1fr}
       nav ul{display:none}
+      .logo{width:40px;height:40px}
+    }
+    @media (max-width:640px){
+      .hero{grid-template-columns:1fr;padding:28px 0;text-align:center}
+      .contact-card{text-align:left;margin-top:6px}
+      .projects{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .wrap{padding:28px 16px}
+      h1{font-size:32px}
+      .hero{align-items:start}
     }
 
-    /* subtle button */
-    .button{display:inline-block;padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);text-decoration:none;color:#fff;font-weight:600}
+    /* subtle button + hover */
+    .button, .cta {
+      display:inline-block;padding:10px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);text-decoration:none;color:#fff;font-weight:600;cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    }
+    .button:hover, .cta:hover {
+      background: var(--accent-gradient);
+      color: #04263b;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.55);
+    }
+    .button:focus { outline: 3px solid rgba(96,165,250,0.12); outline-offset:4px; }
 
     /* small details */
     .muted{color:var(--muted)}
@@ -86,17 +124,15 @@
     .time-item{border-left:2px solid rgba(255,255,255,0.04);padding-left:12px}
     .download{font-size:13px}
 
-    /* glassy hero spotlight */
-    .hero-art{height:320px;border-radius:18px;background:linear-gradient(135deg, rgba(96,165,250,0.12), rgba(110,231,183,0.08));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(2,6,23,0.6);}
-    .hero-art h3{margin:0;font-size:20px;color:#fff}
-
     /* small logo list */
-    .mini-list{display:flex;gap:10px;flex-wrap:wrap}
-    .mini{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:600}
+    .mini-list{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-start}
+    .mini{padding:8px 10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-weight:600;font-size:13px}
 
     /* contact form */
     form{display:grid;gap:12px}
-    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:#fff}
+    label{font-size:13px;color:var(--muted-2)}
+    input,textarea{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:#fff;font-size:15px}
+    input::placeholder, textarea::placeholder{color:rgba(255,255,255,0.4)}
     textarea{min-height:120px;resize:vertical}
 
     /* small animation */
@@ -106,11 +142,14 @@
 </head>
 <body>
   <header>
-    <div class="wrap nav">
-      <div class="brand"><div class="logo">SS</div><div>
-        <div style="font-size:13px;color:var(--muted)">Saipavan Siripuram</div>
-        <div style="font-size:11px;color:var(--muted)">Software Engineer</div>
-      </div></div>
+    <div class="wrap nav" role="banner">
+      <div class="brand" aria-hidden="false">
+        <div class="logo" aria-hidden="true">SS</div>
+        <div>
+          <div style="font-size:13px;color:var(--muted)">Saipavan Siripuram</div>
+          <div style="font-size:11px;color:var(--muted)">Software Engineer</div>
+        </div>
+      </div>
 
       <nav aria-label="primary navigation">
         <ul>
@@ -128,22 +167,22 @@
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
+  <main class="wrap" id="top">
+    <section class="hero" aria-labelledby="intro-heading">
       <div class="fade-in">
-        <div class="eyebrow">Hello — I build delightful web apps</div>
-        <h1>Saipavan Siripuram</h1>
+        <p class="eyebrow" id="intro-eyebrow">Hello — I build delightful web apps</p>
+        <h1 id="intro-heading">Saipavan Siripuram</h1>
         <div class="role">Software Engineer — React · Angular · Node.js · AWS</div>
         <p class="lead">I build scalable, high-performance web applications with a focus on clean user experience, robust APIs, and cloud-first deployments. Experienced in full-stack development, database design and automation using AWS.</p>
 
-        <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+        <div style="margin-top:18px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
           <a class="cta" href="#projects">See Projects</a>
           <a class="button" href="mailto:saipavansiripuram5@gmail.com">Message</a>
-          <a class="button" href="https://github.com/saipavansiripuram" target="_blank">GitHub</a>
+          <a class="button" href="https://github.com/saipavansiripuram" target="_blank" rel="noopener">GitHub</a>
         </div>
 
         <div style="margin-top:22px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-          <div class="mini-list">
+          <div class="mini-list" aria-hidden="true">
             <span class="mini">JavaScript</span>
             <span class="mini">React</span>
             <span class="mini">Angular</span>
@@ -153,49 +192,50 @@
         </div>
       </div>
 
-      <aside class="contact-card fade-in">
+      <aside class="contact-card fade-in" aria-label="contact card">
         <div style="display:flex;justify-content:space-between;align-items:start;gap:12px">
           <div>
-            <div class="big">+91 6309517918</div>
+            <div class="big" aria-hidden="false">+91 6309517918</div>
             <div class="muted">Hyderabad, Telangana</div>
-            <a href="mailto:saipavansiripuram5@gmail.com" style="display:block;margin-top:10px">saipavansiripuram5@gmail.com</a>
+            <a href="mailto:saipavansiripuram5@gmail.com" style="display:block;margin-top:10px;color:var(--muted)">@ saipavansiripuram5@gmail.com</a>
           </div>
-          <div style="text-align:right">
-            <div class="muted">LinkedIn</div>
-            <a href="https://linkedin.com/saipavansiripuram" target="_blank" class="big">linkedin.com/saipavansiripuram</a>
-          </div>
+          <!-- <div style="text-align:right">
+            <div class="muted">LinkedIn</div> -->
+            <!-- FIXED: use /in/ path for LinkedIn profile -->
+            <!-- <a href="https://linkedin.com/in/saipavansiripuram" target="_blank" rel="noopener" class="big" style="color:var(--muted)">linkedin.com/in/saipavansiripuram</a>
+          </div> -->
         </div>
 
         <hr style="margin:16px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
         <div class="muted">Role</div>
         <div style="margin-top:6px" class="role">Software Engineer — LTIMindtree</div>
-        <div style="margin-top:12px;color:var(--muted);font-size:14px">1+ years experience building scalable web apps with React, Angular, Node.js and AWS.</div>
+        <div style="margin-top:12px;color:var(--muted-2);font-size:14px">1+ years experience building scalable web apps with React, Angular, Node.js and AWS.</div>
       </aside>
     </section>
 
-    <section id="about">
+    <section id="about" aria-labelledby="about-heading">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:20px">
-        <h2>About</h2>
-        <div class="download"><a class="button" href="#contact">Download CV</a></div>
+        <h2 id="about-heading">About</h2>
+        <div class="download"><a class="button" href="Saipavan-Siripuram-Resume.pdf" download>Download CV</a></div>
       </div>
-      <div style="margin-top:12px;color:var(--muted)">Software Engineer with 1+ years of experience building scalable, high-performance web applications using React, Angular, Node.js, and AWS. Skilled in full-stack development, database optimization and REST API design, with a strong passion for solving complex problems and delivering user-focused solutions.</div>
+      <div style="margin-top:12px;color:var(--muted-2)">Software Engineer with 1+ years of experience building scalable, high-performance web applications using React, Angular, Node.js, and AWS. Skilled in full-stack development, database optimization and REST API design, with a strong passion for solving complex problems and delivering user-focused solutions.</div>
 
       <div style="margin-top:18px" class="grid-2">
-        <div class="card">
-          <h3>Education</h3>
-          <div style="margin-top:8px;color:var(--muted)">
+        <div class="card" aria-labelledby="edu-heading">
+          <h3 id="edu-heading">Education</h3>
+          <div style="margin-top:8px;color:var(--muted-2)">
             <strong>B.Tech — Computer Science & Engineering (Hons)</strong><br>
             Lovely Professional University — CGPA: 7.69 (2019–2023)
           </div>
-          <div style="margin-top:12px;color:var(--muted)">
+          <div style="margin-top:12px;color:var(--muted-2)">
             <strong>Intermediate (Senior Secondary)</strong><br>
             Sri Gayatri Junior College — CGPA: 9.2 (2017–2019)
           </div>
         </div>
 
-        <div class="card">
-          <h3>Certificates & Achievements</h3>
-          <ul style="margin:8px 0 0 18px;color:var(--muted)">
+        <div class="card" aria-labelledby="cert-heading">
+          <h3 id="cert-heading">Certificates & Achievements</h3>
+          <ul style="margin:8px 0 0 18px;color:var(--muted-2)">
             <li>GitHub Foundations — Microsoft</li>
             <li>Career Essentials in Generative AI — Microsoft & LinkedIn</li>
             <li>Master Java & Spring Boot — Cipher Schools</li>
@@ -205,10 +245,10 @@
       </div>
     </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <div style="margin-top:8px;color:var(--muted)">Languages, frameworks and tools I use regularly:</div>
-      <div style="margin-top:12px" class="chips">
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <div style="margin-top:8px;color:var(--muted-2)">Languages, frameworks and tools I use regularly:</div>
+      <div style="margin-top:12px" class="chips" aria-hidden="true">
         <span class="chip">JavaScript</span>
         <span class="chip">TypeScript</span>
         <span class="chip">Java</span>
@@ -227,78 +267,83 @@
       </div>
     </section>
 
-    <section id="experience">
-      <h2>Experience</h2>
+    <section id="experience" aria-labelledby="exp-heading">
+      <h2 id="exp-heading">Experience</h2>
       <div class="timeline" style="margin-top:12px">
         <div class="time-item card">
           <strong>Software Engineer — LTIMindtree</strong>
           <div class="muted">Jun 2024 – Present • Bengaluru, Karnataka</div>
-          <p style="margin-top:8px;color:var(--muted)">Designed and optimized scalable web application modules using JavaScript, React and Laravel; built and integrated RESTful APIs with MySQL supporting 5,000+ monthly active users; implemented unit testing and participated in agile ceremonies.</p>
+          <p style="margin-top:8px;color:var(--muted-2)">Designed and optimized scalable web application modules using JavaScript, React and Laravel; built and integrated RESTful APIs with MySQL supporting 5,000+ monthly active users; implemented unit testing and participated in agile ceremonies.</p>
         </div>
 
         <div class="time-item card">
           <strong>Web Development Intern — Wibes App Solutions</strong>
           <div class="muted">Jan 2024 – Jun 2024 • Hyderabad</div>
-          <p style="margin-top:8px;color:var(--muted)">Built SPAs using React and Angular; integrated MongoDB and Parse Server; used AWS S3 & EC2 for deployments; collaborated with UI/UX to design responsive layouts.</p>
+          <p style="margin-top:8px;color:var(--muted-2)">Built SPAs using React and Angular; integrated MongoDB and Parse Server; used AWS S3 & EC2 for deployments; collaborated with UI/UX to design responsive layouts.</p>
         </div>
 
         <div class="time-item card">
           <strong>Project Intern — Bharath Dynamics Pvt Ltd</strong>
           <div class="muted">Jan 2022 – Mar 2022 • Hyderabad</div>
-          <p style="margin-top:8px;color:var(--muted)">Developed internal React portal for tracking project progress with reusable components and hooks.</p>
+          <p style="margin-top:8px;color:var(--muted-2)">Developed internal React portal for tracking project progress with reusable components and hooks.</p>
         </div>
       </div>
     </section>
 
-    <section id="projects">
-      <h2>Selected Projects</h2>
+    <section id="projects" aria-labelledby="proj-heading">
+      <h2 id="proj-heading">Selected Projects</h2>
       <div style="margin-top:12px" class="projects">
-        <div class="proj">
-          <h4>L’Oreal Salon Shop — Sep 2024</h4>
+        <div class="proj" role="article" aria-labelledby="proj1">
+          <h4 id="proj1">L’Oreal Salon Shop — Sep 2024</h4>
           <p>Streamlined salon operations with scheduling, inventory, CRM and analytics. Built with PHP, Laravel and MySQL as part of a 5-member team.</p>
         </div>
 
-        <div class="proj">
-          <h4>Video Streaming Platform — Mar 2023 – Jul 2023</h4>
+        <div class="proj" role="article" aria-labelledby="proj2">
+          <h4 id="proj2">Video Streaming Platform — Mar 2023 – Jul 2023</h4>
           <p>Backend dashboard and storage optimization using Angular, Parse Server and AWS for movies & career content streaming.</p>
         </div>
 
-        <div class="proj">
-          <h4>Vehicle Loan Hub — Mar 2023 – Jul 2023</h4>
+        <div class="proj" role="article" aria-labelledby="proj3">
+          <h4 id="proj3">Vehicle Loan Hub — Mar 2023 – Jul 2023</h4>
           <p>A vehicle loan application platform with JWT-based authentication, role-based access and dashboards built with React, Redux and ExpressJS.</p>
         </div>
 
-        <div class="proj">
-          <h4>Personal / Side Projects</h4>
+        <div class="proj" role="article" aria-labelledby="proj4">
+          <h4 id="proj4">Personal / Side Projects</h4>
           <p>Several projects involving REST APIs, microservices, CI/CD pipelines and front-end optimizations.</p>
         </div>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
       <div style="margin-top:12px;display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:start">
         <div class="card">
-          <form onsubmit="handleContact(event)">
-            <label class="muted">Name</label>
-            <input id="cname" placeholder="Your name" required>
-            <label class="muted">Email</label>
-            <input id="cemail" type="email" placeholder="you@example.com" required>
-            <label class="muted">Message</label>
-            <textarea id="cmsg" placeholder="How can I help?" required></textarea>
-            <div style="margin-top:8px;display:flex;gap:8px">
+          <!--
+            Replace "YOUR_FORMSPREE_ID" with your actual Formspree form ID.
+            Example action: https://formspree.io/f/mnqpzjej
+            Alternatively keep the mailto fallback button below for direct email.
+          -->
+          <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" onsubmit="return handleSubmit(event)">
+            <label for="name">Name</label>
+            <input id="name" name="name" placeholder="Your name" required>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="How can I help?" required></textarea>
+            <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
               <button class="button" type="submit">Send</button>
               <a class="button" href="mailto:saipavansiripuram5@gmail.com">Or email directly</a>
             </div>
           </form>
-          <div id="cstatus" style="margin-top:10px;color:var(--muted)"></div>
+          <div id="cstatus" style="margin-top:10px;color:var(--muted-2);font-size:14px" role="status" aria-live="polite"></div>
         </div>
 
-        <aside class="card">
-          <div><strong>Get in touch</strong></div>
+        <aside class="card" aria-labelledby="getintouch">
+          <div id="getintouch"><strong>Get in touch</strong></div>
           <div style="margin-top:8px" class="muted">Phone: +91 6309517918</div>
           <div class="muted">Location: Hyderabad, Telangana</div>
-          <div style="margin-top:12px"><a class="button" href="https://github.com/saipavansiripuram" target="_blank">View GitHub</a></div>
+          <div style="margin-top:12px"><a class="button" href="https://github.com/saipavansiripuram" target="_blank" rel="noopener">View GitHub</a></div>
         </aside>
       </div>
     </section>
@@ -310,32 +355,72 @@
   </footer>
 
   <script>
-    // small helpers - smooth scroll and fake contact handling
+    // Smooth scroll for internal anchors
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
         const href=a.getAttribute('href');
-        if(href.length>1){
+        if(href && href.length>1 && document.querySelector(href)){
           e.preventDefault();
-          const el=document.querySelector(href);
-          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+          document.querySelector(href).scrollIntoView({behavior:'smooth',block:'start'});
+          history.replaceState(null, '', href);
         }
       })
-    })
+    });
 
-    function handleContact(e){
+    // Contact form: client-side graceful handling and fallback to Formspree
+    async function handleSubmit(e){
       e.preventDefault();
-      const name=document.getElementById('cname').value.trim();
-      const email=document.getElementById('cemail').value.trim();
-      const msg=document.getElementById('cmsg').value.trim();
-      const status=document.getElementById('cstatus');
-      if(!name||!email||!msg){status.textContent='Please fill all fields';return}
-      // This is a demo placeholder. Replace with your server endpoint (Formspree, Netlify forms, or your API).
-      status.textContent='Thanks — message prepared. Open your email client to send.';
-      // open mailto as a fallback
-      const subject = encodeURIComponent('Portfolio contact from '+name);
-      const body = encodeURIComponent(msg + '\n\n— ' + name + ' ('+email+')');
-      window.location.href = 'mailto:saipavansiripuram5@gmail.com?subject='+subject+'&body='+body;
+      const status = document.getElementById('cstatus');
+      const form = document.getElementById('contactForm');
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      if(!name || !email || !message){
+        status.textContent = 'Please fill all fields.';
+        return false;
+      }
+
+      status.textContent = 'Sending…';
+      // Try to submit via fetch to the action (Formspree). Some browsers may block cross-origin redirects,
+      // so we send JSON to Formspree endpoint if action is present and not the placeholder.
+      const action = form.action;
+      if(action && !action.includes('YOUR_FORMSPREE_ID')) {
+        try {
+          const data = new FormData(form);
+          const resp = await fetch(action, {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+          if(resp.ok){
+            status.textContent = 'Thanks — message sent successfully.';
+            form.reset();
+            return false;
+          } else {
+            const json = await resp.json().catch(()=>null);
+            status.textContent = (json && json.error) ? 'Error: ' + json.error : 'Submission failed — please try mailto.';
+            return false;
+          }
+        } catch(err){
+          console.error(err);
+          status.textContent = 'Network error — please use the "Or email directly" button.';
+          return false;
+        }
+      } else {
+        // Placeholder path: open mailto as fallback (user must replace the Formspree ID for proper submissions)
+        status.textContent = 'Opening your email client…';
+        const subject = encodeURIComponent('Portfolio contact from ' + name);
+        const body = encodeURIComponent(message + '\n\n— ' + name + ' ('+email+')');
+        window.location.href = 'mailto:saipavansiripuram5@gmail.com?subject='+subject+'&body='+body;
+        return false;
+      }
     }
+
+    // small accessibility: focus outline for keyboard users
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Tab') document.documentElement.classList.add('show-focus');
+    });
   </script>
 </body>
 </html>
